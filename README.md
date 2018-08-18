@@ -1,3 +1,3 @@
 ## kubernetes
 
-random notes and knowledge for docker and kube
+random examples of docker and kubernetes with golang / python
