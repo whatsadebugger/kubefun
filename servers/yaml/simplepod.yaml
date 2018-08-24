@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubefun-manual
+spec:
+  containers:
+  - image: whatsadebugger/kubefun
+    name: kubia
+    ports:
+    - containerPort: 9000
+      protocol: TCP
