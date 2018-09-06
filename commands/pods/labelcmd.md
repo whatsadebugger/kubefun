@@ -56,6 +56,28 @@ without the env label
 ➜  kubefun git:(master) ✗ kg po -l '!env'
 No resources found.
 ```
+
+delete pods with an env variable
+```
+➜  kubefun git:(master) ✗ kg po -L creation_method,env
+NAME                        READY     STATUS    RESTARTS   AGE       CREATION_METHOD   ENV
+kubefun-manual              1/1       Running   0          30m                         debug
+kubefun-manual-with-label   1/1       Running   0          30m       manual            prod
+➜  kubefun git:(master) ✗ kde po -l env
+pod "kubefun-manual" deleted
+pod "kubefun-manual-with-label" deleted
+```
+
+delete a namespace deletes the pods in it you can also do `kde po --all`
+```
+➜  kubefun git:(master) ✗ kde ns custom-namespace
+namespace "custom-namespace" deleted
+
+➜  kubefun git:(master) ✗ kg po -n custom-namespace
+NAME             READY     STATUS    RESTARTS   AGE
+kubefun-manual   1/1       Running   0          3m
+```
+
 ## nodes
 
 label a node with a gpu and ssd flag
@@ -67,4 +89,4 @@ NAME                                     STATUS    ROLES     AGE       VERSION  
 gke-kubefun-default-pool-4fb4229d-2qz5   Ready     <none>    59m       v1.9.7-gke.5   true      true
 ```
 ```note: to deploy a pod to a specific node add a nodeselector in the spec for that pod.```  
-f
+
