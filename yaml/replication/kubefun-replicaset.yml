@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: kubefun
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubefun
+  template:
+    metadata:
+      name: kubefun
+      labels:
+        app: kubefun
+    spec:
+      containers:
+      - name: kubefun
+        image: whatsadebugger/kubefun
+        ports:
+        - containerPort: 9000
