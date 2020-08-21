@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubefun
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  tls:
+  - hosts:
+    - kubefun.example.com
+    secretName: tls-secret
+  rules:
+  - host: kubefun.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubefun-nodeport
+          servicePort: 80
